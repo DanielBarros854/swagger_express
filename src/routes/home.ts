@@ -1,7 +1,11 @@
 import { Request, Response, Router } from "express";
+import HomeController from "../controller/home";
 
-export const home = Router();
+export const Home = Router()
 
-home.get('', (req: Request, res: Response) => {
-  res.json({ message: 'LESSS GOOOO' })
-});
+Home.get('', (req: Request, res: Response) => {
+  const controller = new HomeController()
+  const response = controller.getMessage()
+
+  return res.send(response)
+})
